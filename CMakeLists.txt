@@ -5,6 +5,7 @@ set(CMAKE_CXX_STANDARD 20)
 
 add_subdirectory(third_party)
 
-add_executable (dict_counter main.cpp)
-target_link_libraries(dict_counter fmt::fmt)
+add_subdirectory(src)
 
+enable_testing()
+add_subdirectory(test)

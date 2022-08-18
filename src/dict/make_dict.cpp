@@ -1,3 +1,5 @@
+//#include "make_dict.hpp"
+
 #include <fstream>
 #include <iostream>
 #include <regex>
@@ -5,8 +7,9 @@
 #include <unordered_map>
 
 #include <fmt/core.h>
+#include <dict/make_dict.hpp>
 
-void MakeDict(std::istream& is, std::ostream& os) {
+void MakeDict(std::istream &is, std::ostream &os) {
   std::string line;
 
   std::unordered_map<std::string, uint64_t> dict;
@@ -49,7 +52,7 @@ void MakeDict(std::istream& is, std::ostream& os) {
 
     std::sort(tokens.begin(), tokens.end());
 
-    for (auto& token : tokens) {
+    for (auto &token : tokens) {
       os << token.count << " " << token.word << std::endl;
     }
   } else {
@@ -57,19 +60,8 @@ void MakeDict(std::istream& is, std::ostream& os) {
   }
 }
 
-void MakeDict(const std::string &in, const std::string& out) {
+void MakeDict(const std::string &in, const std::string &out) {
   std::ifstream ifs(in, std::ifstream::in);
   std::ofstream ofs(out, std::ifstream::out);
   MakeDict(ifs, ofs);
-}
-
-int main(int argc, char *argv[]) {
-  const int arg_count = 2;
-  if (argc != arg_count + 1) {
-    throw std::runtime_error(fmt::format("Wrong number of arguments, expected {}, got {}", arg_count, argc - 1));
-  }
-
-  MakeDict(argv[1], argv[2]);
-
-  return 0;
 }
