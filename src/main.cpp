@@ -1,8 +1,7 @@
 #include <fmt/core.h>
 #include <dict/make_dict.hpp>
 
-
-int main(int argc, char *argv[]) {
+int main(int argc, char* argv[]) {
   const int arg_count = 2;
   if (argc != arg_count + 1) {
     throw std::runtime_error(fmt::format(

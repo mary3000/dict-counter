@@ -8,6 +8,6 @@
 
 #include <fmt/core.h>
 
-void MakeDict(std::istream &is, std::ostream &os);
+void MakeDict(std::istream& is, std::ostream& os);
 
-void MakeDict(const std::string &in, const std::string &out);
+void MakeDict(const std::string& in, const std::string& out);

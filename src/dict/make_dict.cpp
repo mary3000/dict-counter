@@ -7,7 +7,7 @@
 #include <fmt/core.h>
 #include <dict/make_dict.hpp>
 
-void MakeDict(std::istream &is, std::ostream &os) {
+void MakeDict(std::istream& is, std::ostream& os) {
   std::string line;
 
   std::unordered_map<std::string, uint64_t> dict;
@@ -31,9 +31,10 @@ void MakeDict(std::istream &is, std::ostream &os) {
       uint64_t count;
 
       Token(std::string word_, uint64_t count_)
-          : word(std::move(word_)), count(count_) {}
+          : word(std::move(word_)), count(count_) {
+      }
 
-      bool operator<(const Token &other) const {
+      bool operator<(const Token& other) const {
         return count > other.count ||
                (count == other.count && word < other.word);
       }
@@ -41,7 +42,7 @@ void MakeDict(std::istream &is, std::ostream &os) {
 
     std::vector<Token> tokens;
     tokens.reserve(dict.size());
-    for (auto &[word, count] : dict) {
+    for (auto& [word, count] : dict) {
       if (word.empty()) {
         continue;
       }
@@ -50,7 +51,7 @@ void MakeDict(std::istream &is, std::ostream &os) {
 
     std::sort(tokens.begin(), tokens.end());
 
-    for (auto &token : tokens) {
+    for (auto& token : tokens) {
       os << token.count << " " << token.word << std::endl;
     }
   } else {
@@ -58,7 +59,7 @@ void MakeDict(std::istream &is, std::ostream &os) {
   }
 }
 
-void MakeDict(const std::string &in, const std::string &out) {
+void MakeDict(const std::string& in, const std::string& out) {
   std::ifstream ifs(in, std::ifstream::in);
   std::ofstream ofs(out, std::ifstream::out);
   MakeDict(ifs, ofs);

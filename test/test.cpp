@@ -1,7 +1,7 @@
 #include <dict/make_dict.hpp>
 #include <gtest/gtest.h>
 
-void CheckDict(const std::string &input, const std::string &expected_output) {
+void CheckDict(const std::string& input, const std::string& expected_output) {
   std::istringstream in(input);
   std::ostringstream out;
   MakeDict(in, out);
@@ -9,30 +9,34 @@ void CheckDict(const std::string &input, const std::string &expected_output) {
 }
 
 TEST(Dict, Simple) {
-  CheckDict("aaa bbb zzz bbb aaa aaa", "3 aaa\n"
-                                       "2 bbb\n"
-                                       "1 zzz\n");
+  CheckDict("aaa bbb zzz bbb aaa aaa",
+            "3 aaa\n"
+            "2 bbb\n"
+            "1 zzz\n");
 }
 
 TEST(Dict, AlphabeticalOrder) {
-  CheckDict("bbb ccc zzz bbb aaa ccc aaa", "2 aaa\n"
-                                           "2 bbb\n"
-                                           "2 ccc\n"
-                                           "1 zzz\n");
+  CheckDict("bbb ccc zzz bbb aaa ccc aaa",
+            "2 aaa\n"
+            "2 bbb\n"
+            "2 ccc\n"
+            "1 zzz\n");
 }
 
 TEST(Dict, Delimiters) {
-  CheckDict("hhh    sss;ggg44364322ggg`ccc", "2 ggg\n"
-                                             "1 ccc\n"
-                                             "1 hhh\n"
-                                             "1 sss\n");
+  CheckDict("hhh    sss;ggg44364322ggg`ccc",
+            "2 ggg\n"
+            "1 ccc\n"
+            "1 hhh\n"
+            "1 sss\n");
 }
 
 TEST(Dict, CaseSensitivity) {
-  CheckDict("bBB CCC zzz bbb AAA ccc aAa", "2 aaa\n"
-                                           "2 bbb\n"
-                                           "2 ccc\n"
-                                           "1 zzz\n");
+  CheckDict("bBB CCC zzz bbb AAA ccc aAa",
+            "2 aaa\n"
+            "2 bbb\n"
+            "2 ccc\n"
+            "1 zzz\n");
 }
 
 TEST(Dict, Empty) {
