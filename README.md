@@ -1,6 +1,5 @@
 # dict-counter
 
----
 ## todo
 
 - Dockerize
@@ -15,14 +14,10 @@ Main target: `dict_counter`, arguments: `<input_file> <output_file>`.
 
 Test target: `dict_test`.
 
-### CMake build
-
+### CMake build 
  
 `cmake .`  
-`make`. 
+`make`  
 `dict_counter <input_file> <output_file>`
 
 For testing, run `ctest`
-
-
-
