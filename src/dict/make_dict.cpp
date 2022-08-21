@@ -12,17 +12,23 @@ void MakeDict(std::istream& is, std::ostream& os) {
 
   std::unordered_map<std::string, uint64_t> dict;
 
-  if (!is.eof()) {
+  if (!is.eof() && !is.bad()) {
     while (std::getline(is, line)) {
-      std::regex e("[^a-zA-Z]+");
-      std::regex_token_iterator<std::string::iterator> i(line.begin(),
-                                                         line.end(), e, -1);
-      std::regex_token_iterator<std::string::iterator> end;
-      while (i != end) {
-        std::string str = *i++;
-        std::transform(str.begin(), str.end(), str.begin(),
-                       [](unsigned char c) { return std::tolower(c); });
-        dict[str]++;
+      std::transform(line.begin(), line.end(), line.begin(),
+                     [](unsigned char c) { return std::tolower(c); });
+      std::string token;
+      for (char c : line) {
+        if (!isalpha(c)) {
+          if (!token.empty()) {
+            dict[token]++;
+            token = "";
+          }
+        } else {
+          token += c;
+        }
+      }
+      if (!token.empty()) {
+        dict[token]++;
       }
     }
 
