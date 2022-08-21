@@ -28,5 +28,6 @@ For testing, run `ctest` from the `build` directory
 There is also automatic script, that build (if neccessary) and runs the program on a huge file (`huge.txt`).
 If output ends with `SUCCESS`, check was passed. If it end with `FAIL` or any other output - something went wrong.
 
-Just run:  
-`bash test_huge.sh`
+1. Put some huge file in the root of the project, and name it `huge.txt`
+2. Put the expected dictionary file in the same directory; name it `out_huge.txt`
+3. Run `bash test_huge.sh`
