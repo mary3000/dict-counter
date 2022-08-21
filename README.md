@@ -16,8 +16,9 @@ Test target: `dict_test`.
 
 ### CMake build 
  
-`cmake .`  
-`make`  
-`dict_counter <input_file> <output_file>`
+`mkdir build && cd build`  
+`cmake ..`  
+`cmake --build .`  
+`./src/dict_counter <input_file> <output_file>`
 
-For testing, run `ctest`
+For testing, run `ctest` from the `build` directory
