@@ -22,3 +22,11 @@ Test target: `dict_test`.
 `./src/dict_counter <input_file> <output_file>`
 
 For testing, run `ctest` from the `build` directory
+
+### Check on a huge file
+
+There is also automatic script, that build (if neccessary) and runs the program on a huge file (`huge.txt`).
+If output ends with `SUCCESS`, check was passed. If it end with `FAIL` or any other output - something went wrong.
+
+Just run:  
+`bash test_huge.sh`
